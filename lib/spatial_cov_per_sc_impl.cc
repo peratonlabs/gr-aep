@@ -69,41 +69,6 @@ namespace gr {
       volk_free(buf_b);
     }
 
-    void spatial_cov_per_sc_impl::calc_spatial_covariance(gr_complex *out)
-    {
-      gr_complex dp;
-
-      //vector < gr_complex > _buf_a(d_num_avg), _buf_b(d_num_avg);
-
-      // Work from sample_buf
-      for (int sc = 0; sc < d_fft_size; sc++)
-      {
-          // printf("Xs[%d]=[",sc);
-          for (int i=0; i<d_M; i++)
-          {
-              for (int j=0; j<d_M; j++)
-              {
-                for (int k = 0; k < d_num_avg; k++)
-                {
-                  buf_a[k] = d_sample_buf[i][k*d_fft_size+sc];
-                  buf_b[k] = d_sample_buf[j][k*d_fft_size+sc];
-                  
-                }
-
-                volk_32fc_x2_conjugate_dot_prod_32fc(&dp, &buf_a[0], &buf_b[0], d_num_avg);
-                // printf("%e+%ej,",real(dp),imag(dp));
-
-                out[sc*d_M*d_M+i*d_M+j] = dp;
-
-                // void volk_32fc_x2_dot_prod_32fc(lv_32fc_t* result, const lv_32fc_t* input, const lv_32fc_t* taps, unsigned int num_points)
-                // volk_32fc_x2_dot_prod_32fc(lv_32fc_t* result, const lv_32fc_t* input, const lv_32fc_t* taps, unsigned int num_points)
-
-              }
-          }
-          // printf("];\n");
-      }
-
-    }
 
     int
     spatial_cov_per_sc_impl::work(int noutput_items,
@@ -127,13 +92,6 @@ namespace gr {
           // R = conj(Xs*Xs.t());
           R = (Xs*Xs.t());
           
-          // R = Xs.t()*Xs;
-
-          // for (int m=0; m<d_M; m++)      
-          // {
-          //   memcpy(&out[i*d_M*d_M*d_fft_size+sc*d_M*d_M + m*d_M], R.colptr(m), sizeof(gr_complex)*d_M);
-
-          // }
 
           memcpy(&out[i*d_M*d_M*d_fft_size+sc*d_M*d_M], R.memptr(), sizeof(gr_complex)*d_M*d_M);
           

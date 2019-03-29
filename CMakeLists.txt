@@ -93,6 +93,8 @@ if(NOT Boost_FOUND)
     message(FATAL_ERROR "Boost required to compile aep")
 endif()
 
+find_package(Armadillo)
+
 ########################################################################
 # Install directories
 ########################################################################

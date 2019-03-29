@@ -22,5 +22,6 @@ install(FILES
     aep_apply_weights.xml
     aep_aep_metric.xml
     aep_aep_channel_processing.xml
-    aep_spatial_cov_per_sc.xml DESTINATION share/gnuradio/grc/blocks
+    aep_spatial_cov_per_sc.xml
+    aep_uniform_linear_array.xml DESTINATION share/gnuradio/grc/blocks
 )

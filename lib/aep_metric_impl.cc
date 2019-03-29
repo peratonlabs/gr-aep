@@ -78,12 +78,7 @@ namespace gr {
         int a = (s + history() - 1);
         for (int sc = 0; sc < d_num_sc; sc++)
         {
-          //memcpy(R_old.memptr(), &in[s * item_size + (d_M * d_M * sc)], sizeof(gr_complex)*d_M*d_M);
-          //memcpy(R_new.memptr(), &in[a * item_size + (d_M * d_M * sc)], sizeof(gr_complex)*d_M*d_M);
 
-          // cf_mat R_old( (gr_complex *) &in[s * item_size + (d_M * d_M * sc)], d_M, d_M, false, true);
-          // cf_mat R_new( (gr_complex *) &in[a * item_size + (d_M * d_M * sc)], d_M, d_M, false, true);
-          
           for (int i = 0; i < d_M; i++)
           // for (int j = 0; j < d_M; j++)
           {

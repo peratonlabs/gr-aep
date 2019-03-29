@@ -1,11 +1,11 @@
 title: The AEP OOT Module
-brief: Short description of gr-aep
+brief: A GNU Ratio Module for performing beamforming using Adaptive Event Processing
 tags: # Tags are arbitrary, but look at CGRAN what other authors are using
   - sdr
 author:
-  - Author Name <authors@email.address>
+  - Joshua Morman <jmorman@perspectalabs.com>
 copyright_owner:
-  - Copyright Owner 1
+  - Perspecta Labs
 license:
 #repo: # Put the URL of the repository here, or leave blank for default
 #website: <module_website> # If you have a separate project website, put it here

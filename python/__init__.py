@@ -31,4 +31,5 @@ except ImportError:
 	pass
 
 # import any pure python here
+from uniform_linear_array import uniform_linear_array
 #

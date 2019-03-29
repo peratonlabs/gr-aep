@@ -23,8 +23,8 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 
-include_directories(${Boost_INCLUDE_DIR})
-link_directories(${Boost_LIBRARY_DIRS})
+include_directories(${Boost_INCLUDE_DIR} ${ARMADILLO_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS} ${ARMADILLO_LIBRARY_DIRS})
 
 list(APPEND aep_sources
     apply_weights_impl.cc
@@ -40,7 +40,7 @@ if(NOT aep_sources)
 endif(NOT aep_sources)
 
 add_library(gnuradio-aep SHARED ${aep_sources})
-target_link_libraries(gnuradio-aep ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(gnuradio-aep ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES} ${ARMADILLO_LIBRARIES})
 set_target_properties(gnuradio-aep PROPERTIES DEFINE_SYMBOL "gnuradio_aep_EXPORTS")
 
 if(APPLE)

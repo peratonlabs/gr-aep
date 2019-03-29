@@ -4,3 +4,6 @@ build/
 *.sc16
 .vscode
 examples/*.py
+*.pyc
+**/core
+debug/
