@@ -1,0 +1,5 @@
+build/
+*.fc32
+*.dat
+*.sc16
+.vscode
