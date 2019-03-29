@@ -27,11 +27,19 @@
  */
 
 #include "qa_aep.h"
+#include "qa_apply_weights.h"
+#include "qa_aep_metric.h"
+#include "qa_aep_channel_processing.h"
+#include "qa_spatial_cov_per_sc.h"
 
 CppUnit::TestSuite *
 qa_aep::suite()
 {
   CppUnit::TestSuite *s = new CppUnit::TestSuite("aep");
+  s->addTest(gr::aep::qa_apply_weights::suite());
+  s->addTest(gr::aep::qa_aep_metric::suite());
+  s->addTest(gr::aep::qa_aep_channel_processing::suite());
+  s->addTest(gr::aep::qa_spatial_cov_per_sc::suite());
 
   return s;
 }

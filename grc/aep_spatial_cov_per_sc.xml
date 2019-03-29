@@ -1,0 +1,33 @@
+<block>
+  <name>Spatial Covariance Per Subcarrier</name>
+  <key>aep_spatial_cov_per_sc</key>
+  <category>[AEP]</category>
+  <import>import aep</import>
+  <make>aep.spatial_cov_per_sc($M, $fft_size, $num_avg)</make>
+  <param>
+    <name>Num Apertures</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>FFT Size</name>
+    <key>fft_size</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Num Avg</name>
+    <key>num_avg</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$M*$fft_size</vlen>
+    <!-- <nports>$M</nports> -->
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$M*$M*$fft_size</vlen>
+  </source>
+</block>

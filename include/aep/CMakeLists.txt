@@ -23,5 +23,8 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/aep
+    apply_weights.h
+    aep_metric.h
+    aep_channel_processing.h
+    spatial_cov_per_sc.h DESTINATION include/aep
 )

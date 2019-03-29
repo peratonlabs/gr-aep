@@ -27,6 +27,10 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND aep_sources
+    apply_weights_impl.cc
+    aep_metric_impl.cc
+    aep_channel_processing_impl.cc
+    spatial_cov_per_sc_impl.cc
 )
 
 set(aep_sources "${aep_sources}" PARENT_SCOPE)
@@ -61,6 +65,10 @@ include_directories(${CPPUNIT_INCLUDE_DIRS})
 list(APPEND test_aep_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/test_aep.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/qa_aep.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_spatial_cov_per_sc.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_aep_channel_processing.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_aep_metric.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_apply_weights.cc
 )
 
 add_executable(test-aep ${test_aep_sources})

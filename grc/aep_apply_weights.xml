@@ -1,0 +1,38 @@
+<block>
+  <name>Apply Weights</name>
+  <key>aep_apply_weights</key>
+  <category>[AEP]</category>
+  <import>import aep</import>
+  <make>aep.apply_weights($M, $num_sc, $num_avg)</make>
+  <param>
+    <name>Num Apertures</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Num Subcarriers</name>
+    <key>num_sc</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Num Averages</name>
+    <key>num_avg</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>weights</name>
+    <type>complex</type>
+    <vlen>$num_sc*M</vlen>
+  </sink>
+  <sink>
+    <name>sc</name>
+    <type>complex</type>
+    <vlen>$num_sc</vlen>
+    <nports>$M</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$num_sc</vlen>
+  </source>
+</block>

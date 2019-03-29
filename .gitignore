@@ -3,3 +3,4 @@ build/
 *.dat
 *.sc16
 .vscode
+examples/*.py
