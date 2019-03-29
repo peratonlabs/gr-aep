@@ -1,0 +1,10 @@
+build/
+*.fc32
+*.dat
+*.sc16
+.vscode
+examples/*.py
+*.pyc
+**/core
+debug/
+core
