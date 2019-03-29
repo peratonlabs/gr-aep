@@ -1,0 +1,42 @@
+<block>
+  <name>AEP Metric</name>
+  <key>aep_aep_metric</key>
+  <category>[AEP]</category>
+  <import>import aep</import>
+  <make>aep.aep_metric($M, $num_sc, $nmem, $thresh)</make>
+  <param>
+    <name>Num Apertures</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Num Subcarriers</name>
+    <key>num_sc</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nmem</name>
+    <key>nmem</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Threshold</name>
+    <key>thresh</key>
+    <type>float</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$M*$M*$num_sc</vlen>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <vlen>$num_sc</vlen>
+  </source>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$num_sc*$M</vlen>
+  </source>
+</block>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<block>
+  <name>Uniform Linear Array</name>
+  <key>aep_uniform_linear_array</key>
+  <category>[AEP]</category>
+  <import>import aep</import>
+  <make>aep.uniform_linear_array($num_elements, $sep_lambda, $angle_degrees)</make>
+
+  <param>
+    <name>Num Apertures</name>
+    <key>num_elements</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Separation in Wavelengths</name>
+    <key>sep_lambda</key>
+    <type>float</type>
+  </param>
+    <param>
+    <name>Angle (degrees)</name>
+    <key>angle_degrees</key>
+    <type>float</type>
+  </param>
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>1</vlen>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$num_elements</vlen>
+  </source>
+</block>
