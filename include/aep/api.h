@@ -26,9 +26,9 @@
 #include <gnuradio/attributes.h>
 
 #ifdef gnuradio_aep_EXPORTS
-#  define AEP_API __GR_ATTR_EXPORT
+#define AEP_API __GR_ATTR_EXPORT
 #else
-#  define AEP_API __GR_ATTR_IMPORT
+#define AEP_API __GR_ATTR_IMPORT
 #endif
 
 #endif /* INCLUDED_AEP_API_H */

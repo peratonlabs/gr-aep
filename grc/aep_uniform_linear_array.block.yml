@@ -1,0 +1,38 @@
+id: aep_uniform_linear_array
+label: Uniform Linear Array
+category: '[AEP]'
+
+parameters:
+-   id: num_elements
+    label: Num Apertures
+    dtype: int
+    default: 4
+-   id: sep_lambda
+    label: Separation of Elements in Wavelengths
+    dtype: float
+    default: 0.5
+-   id: angle_degrees
+    label: Angle (degrees)
+    dtype: float
+    default: 45.0
+
+
+inputs: 
+-   domain: stream
+    dtype: complex
+    vlen: 1
+
+outputs:
+-   domain: stream
+    dtype: complex
+    vlen: ${num_elements}
+
+templates:
+    imports: import aep
+    make: aep.uniform_linear_array(${num_elements}, ${sep_lambda}, ${angle_degrees})
+
+documentation: |-
+    This block simulates a perfect Uniform Linear Array and is used for testing the AEP blocks by providing receiver streams of incoming data at a specified angle as a vector
+
+file_format: 1
+

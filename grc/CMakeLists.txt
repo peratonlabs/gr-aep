@@ -19,9 +19,9 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    aep_apply_weights.xml
-    aep_aep_metric.xml
-    aep_aep_channel_processing.xml
-    aep_spatial_cov_per_sc.xml
-    aep_uniform_linear_array.xml DESTINATION share/gnuradio/grc/blocks
+    aep_apply_weights.block.yml
+    aep_aep_metric.block.yml
+    aep_aep_channel_processing.block.yml
+    aep_spatial_cov_per_sc.block.yml
+    aep_uniform_linear_array.block.yml DESTINATION share/gnuradio/grc/blocks
 )

@@ -42,7 +42,4 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-aep)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_apply_weights ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_apply_weights.py)
-GR_ADD_TEST(qa_aep_metric ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_aep_metric.py)
-GR_ADD_TEST(qa_aep_channel_processing ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_aep_channel_processing.py)
-GR_ADD_TEST(qa_spatial_cov_per_sc ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_spatial_cov_per_sc.py)
+

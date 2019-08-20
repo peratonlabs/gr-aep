@@ -1,0 +1,38 @@
+id: aep_spatial_cov_per_sc
+label: Spatial Covariance Per Subcarrier
+category: '[AEP]'
+
+parameters:
+-   id: M
+    label: Num Apertures
+    dtype: int
+    default: 4
+-   id: fft_size
+    label: FFT Size
+    dtype: int
+    default: 64
+-   id: num_avg
+    label: Averaging Used For Spatial Covariance
+    dtype: int
+    default: 32
+
+
+inputs: 
+-   domain: stream
+    dtype: complex
+    vlen: ${fft_size*M}
+
+outputs:
+-   domain: stream
+    dtype: complex
+    vlen: ${fft_size*M*M}
+
+
+templates:
+    imports: import aep
+    make: aep.spatial_cov_per_sc(${M}, ${fft_size}, ${num_avg})
+
+documentation: |-
+    This block calculates the spatial covariance across M apertures per subcarrier post-FFT
+
+file_format: 1

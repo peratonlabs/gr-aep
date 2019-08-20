@@ -1,0 +1,42 @@
+id: aep_apply_weights
+label: Apply AEP Weights
+category: '[AEP]'
+
+parameters:
+-   id: M
+    label: Num Apertures
+    dtype: int
+    default: 4
+-   id: num_sc
+    label: Num Subcarriers
+    dtype: int
+    default: 64
+-   id: num_avg
+    label: Averaging Used For Spatial Covariance
+    dtype: int
+    default: 32
+
+
+inputs: 
+-   domain: stream
+    dtype: complex
+    vlen: ${num_sc*M}
+-   domain: stream
+    dtype: complex
+    vlen: ${num_sc}
+    multiplicity: ${M}
+
+outputs:
+-   domain: stream
+    dtype: complex
+    vlen: ${num_sc}
+
+
+templates:
+    imports: import aep
+    make: aep.apply_weights(${M}, ${num_sc}, ${num_avg})
+
+documentation: |-
+    This block applies the weights calculated by the other AEP blocks to the original stream to produce a single output
+
+file_format: 1

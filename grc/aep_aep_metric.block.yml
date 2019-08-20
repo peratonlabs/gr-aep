@@ -1,0 +1,43 @@
+id: aep_aep_metric
+label: AEP Metric
+category: '[AEP]'
+
+parameters:
+-   id: M
+    label: Num Apertures
+    dtype: int
+    default: 4
+-   id: num_sc
+    label: Num Subcarriers
+    dtype: int
+    default: 64
+-   id: nmem
+    label: Nmem Window Size
+    dtype: int
+    default: 4
+-   id: thresh
+    label: Threshold
+    dtype: float
+    default: 5.0
+
+inputs: 
+-   domain: stream
+    dtype: complex
+    vlen: ${M*M*num_sc}
+
+outputs:
+-   domain: stream
+    dtype: float
+    vlen: ${num_sc}
+-   domain: stream
+    dtype: complex
+    vlen: ${M*num_sc}
+
+templates:
+    imports: import aep
+    make: aep.aep_metric(${M}, ${num_sc}, ${nmem}, ${thresh})
+
+documentation: |-
+    The AEP Metric block calculates the AEP metric across each subcarrier over the time window nmem, and passes on the calculated eigenvectors when a threshold is surpassed
+
+file_format: 1
