@@ -4,6 +4,8 @@ tags: # Tags are arbitrary, but look at CGRAN what other authors are using
   - beamforming 
   - multiantenna
   - array processing
+  - signal detection
+  - blind
 author:
   - Joshua Morman <jmorman@perspectalabs.com>
 copyright_owner:

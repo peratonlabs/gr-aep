@@ -124,8 +124,8 @@ blocks:
     rangeType: float
     start: '0.0'
     step: '0.1'
-    stop: '50.0'
-    value: '5.0'
+    stop: 5e6
+    value: 500e3
     widget: counter_slider
   states:
     bus_sink: false
@@ -210,7 +210,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1048, 1064.0]
+    coordinate: [968, 1056.0]
     rotation: 0
     state: enabled
 - name: aep_spatial_cov_per_sc_0
@@ -228,7 +228,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1504, 764.0]
+    coordinate: [1408, 860.0]
     rotation: 0
     state: enabled
 - name: aep_uniform_linear_array_0
@@ -287,6 +287,28 @@ blocks:
     coordinate: [720, 292.0]
     rotation: 0
     state: enabled
+- name: analog_fastnoise_source_x_0_0
+  id: analog_fastnoise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '.001'
+    comment: 'Add a little bit
+
+      of simulated receiver noise'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    samples: '8192'
+    seed: '-436881'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1420.0, 40]
+    rotation: 270
+    state: enabled
 - name: analog_sig_source_x_0
   id: analog_sig_source_x
   parameters:
@@ -326,6 +348,24 @@ blocks:
     bus_structure: null
     coordinate: [1344, 208.0]
     rotation: 0
+    state: enabled
+- name: blocks_add_xx_0_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: M
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1360, 336.0]
+    rotation: 180
     state: enabled
 - name: blocks_complex_to_mag_0_1
   id: blocks_complex_to_mag
@@ -537,7 +577,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 964.0]
+    coordinate: [696, 908.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -648,6 +688,24 @@ blocks:
     coordinate: [1232, 880.0]
     rotation: 0
     state: enabled
+- name: blocks_stream_to_vector_2
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: M
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1536.0, 248]
+    rotation: 270
+    state: true
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -657,7 +715,7 @@ blocks:
     ignoretag: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samples_per_second: samp_rate/1000
+    samples_per_second: samp_rate/100
     type: complex
     vlen: '1'
   states:
@@ -792,7 +850,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 984.0]
+    coordinate: [464, 928.0]
     rotation: 0
     state: enabled
 - name: blocks_vector_to_streams_0
@@ -1004,7 +1062,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1528, 964.0]
+    coordinate: [1456, 1028.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1_0
@@ -1217,7 +1275,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1344, 308.0]
+    coordinate: [1200, 348.0]
     rotation: 180
     state: true
 - name: virtual_sink_1
@@ -1230,7 +1288,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1840, 780.0]
+    coordinate: [1744, 876.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -1270,8 +1328,10 @@ connections:
 - [aep_uniform_linear_array_0, '0', blocks_add_xx_0, '0']
 - [aep_uniform_linear_array_0_0, '0', blocks_add_xx_0, '1']
 - [analog_fastnoise_source_x_0, '0', aep_uniform_linear_array_0_0, '0']
+- [analog_fastnoise_source_x_0_0, '0', blocks_stream_to_vector_2, '0']
 - [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
-- [blocks_add_xx_0, '0', virtual_sink_0, '0']
+- [blocks_add_xx_0, '0', blocks_add_xx_0_0, '0']
+- [blocks_add_xx_0_0, '0', virtual_sink_0, '0']
 - [blocks_complex_to_mag_0_1, '0', qtgui_time_sink_x_1_0, '0']
 - [blocks_complex_to_mag_0_1_0, '0', qtgui_time_sink_x_1_0, '1']
 - [blocks_complex_to_mag_0_1_1, '0', qtgui_time_sink_x_1_0, '2']
@@ -1290,6 +1350,7 @@ connections:
 - [blocks_stream_to_vector_0_0_0, '0', fft_vxx_0_0_0, '0']
 - [blocks_stream_to_vector_0_0_1, '0', fft_vxx_0_0_1, '0']
 - [blocks_stream_to_vector_1, '0', aep_spatial_cov_per_sc_0, '0']
+- [blocks_stream_to_vector_2, '0', blocks_add_xx_0_0, '1']
 - [blocks_throttle_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_vector_source_x_0, '0', blocks_throttle_0, '0']
 - [blocks_vector_to_stream_0, '0', blocks_interleave_0, '0']
