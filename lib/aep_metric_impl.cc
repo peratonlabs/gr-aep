@@ -77,10 +77,13 @@ int aep_metric_impl::work(int noutput_items,
         {
 
           R_old.at(j, i) = in[s * item_size + (d_M * d_M * sc) + i * d_M + j];
-
           R_new.at(j, i) = in[a * item_size + (d_M * d_M * sc) + i * d_M + j];
         }
       }
+
+      // Add diagonal so low rank scenario is not singular
+      R_old += cf_mat(R_old.n_rows, R_old.n_cols,fill::eye)*1.0e-3;
+      R_new += cf_mat(R_new.n_rows, R_new.n_cols,fill::eye)*1.0e-3;
 
       cf_mat U(d_M, d_M);
       cf_vec D(d_M);

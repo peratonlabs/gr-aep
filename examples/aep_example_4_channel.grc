@@ -96,7 +96,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 4,0,1,1
     label: SNR
     min_len: '200'
     orient: Qt.Horizontal
@@ -117,7 +117,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: 3,0,1,1
     label: Threshold
     min_len: '200'
     orient: Qt.Horizontal
@@ -715,7 +715,7 @@ blocks:
     ignoretag: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samples_per_second: samp_rate/100
+    samples_per_second: samp_rate/10
     type: complex
     vlen: '1'
   states:
@@ -999,7 +999,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 1,0,1,1
     label1: ''
     label10: ''
     label2: ''
@@ -1102,7 +1102,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0,0,1,1
     label1: ''
     label10: ''
     label2: ''
@@ -1199,7 +1199,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 2,0,1,1
     label1: ''
     label10: ''
     label2: ''

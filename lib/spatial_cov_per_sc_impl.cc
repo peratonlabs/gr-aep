@@ -87,7 +87,6 @@ int spatial_cov_per_sc_impl::work(int noutput_items,
                sizeof(gr_complex) * d_M);
       }
 
-      // R = conj(Xs*Xs.t());
       R = (Xs * Xs.t());
 
       memcpy(&out[i * d_M * d_M * d_fft_size + sc * d_M * d_M], R.memptr(),
