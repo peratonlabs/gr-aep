@@ -29,7 +29,7 @@ if(NOT aep_sources)
 endif(NOT aep_sources)
 
 add_library(gnuradio-aep SHARED ${aep_sources})
-target_link_libraries(gnuradio-aep gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-aep gnuradio::gnuradio-runtime ${ARMADILLO_LIBRARIES})
 target_include_directories(
     gnuradio-aep
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
